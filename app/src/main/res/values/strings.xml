@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Show Time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="arriving_today">Arriving Today</string>
+    <string name="movies">Movies</string>
+
+    <string name="api_key">f687013245cc1386305a52890b31e484</string>
+    <string name="something_went_wrong">Something went wrong. Please try again</string>
 </resources>

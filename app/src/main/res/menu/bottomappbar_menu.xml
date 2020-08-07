@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_movies"
+        android:enabled="true"
+        android:icon="@drawable/selector_movies"
+        android:title="Explore"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_tv"
+        android:enabled="true"
+        android:icon="@drawable/selector_tv"
+        android:title="TV"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/selector_search"
+        android:title="Search"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_shop"
+        android:enabled="true"
+        android:icon="@drawable/selector_my_stuffs"
+        android:title="My Stuffs"
+        app:showAsAction="always|withText" />
+
+</menu>
