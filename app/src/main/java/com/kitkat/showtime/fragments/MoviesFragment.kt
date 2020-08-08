@@ -1,5 +1,6 @@
 package com.kitkat.showtime.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.kitkat.showtime.R
+import com.kitkat.showtime.activities.ArrivingTodayActivity
 import com.kitkat.showtime.adapters.BannerAdapter
 import com.kitkat.showtime.adapters.ShowAdapter
 import com.kitkat.showtime.db.DatabaseHandler
@@ -29,7 +31,7 @@ import retrofit2.Response
 import java.util.*
 
 
-class MoviesFragment : Fragment() {
+class MoviesFragment : Fragment(), View.OnClickListener {
 
     var dbHandler: DatabaseHandler? = null
     lateinit var pager_images: ViewPager
@@ -56,6 +58,8 @@ class MoviesFragment : Fragment() {
         initViews(view)
 
         apiCalls(view)
+
+        view.rlArrivingToday.setOnClickListener(this)
 
         view.swipeRefreshLayout.setOnRefreshListener {
 
@@ -503,6 +507,18 @@ class MoviesFragment : Fragment() {
 
         countDownTimer?.cancel()
 
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id)
+        {
+            R.id.rlArrivingToday->
+            {
+                val intent = Intent(context, ArrivingTodayActivity::class.java)
+                intent.putExtra("source", "movies")
+                startActivity(intent)
+            }
+        }
     }
 
 }

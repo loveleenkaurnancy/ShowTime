@@ -1,6 +1,8 @@
 package com.kitkat.showtime.model
 
-class ShowModel {
+import java.io.Serializable
+
+class ShowModel : Serializable {
 
     private var results: List<Result>? = null
 

@@ -1,0 +1,67 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/margin_20dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_arriving_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="@dimen/margin_10dp"
+                android:text="@string/arriving_today"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:rotation="-180"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/tv_total_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_arriving_today"
+                android:layout_marginVertical="@dimen/margin_10dp"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_14sp" />
+
+            <View
+                android:id="@+id/rule"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_total_count"
+                android:background="@color/grey"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvArrivingToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rule"
+                android:layout_marginTop="@dimen/margin_15dp"
+                tools:listitem="@layout/item_show" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
