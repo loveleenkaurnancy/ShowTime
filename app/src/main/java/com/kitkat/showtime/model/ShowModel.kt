@@ -1,6 +1,6 @@
 package com.kitkat.showtime.model
 
-class ThumbnailModel {
+class ShowModel {
 
     private var results: List<Result>? = null
 
@@ -10,6 +10,7 @@ class ThumbnailModel {
 
     class Result {
 
+        var id: Int? = 0
         var backdrop_path: String? = ""
 
     }

@@ -1,9 +1,7 @@
 package com.kitkat.showtime.adapters
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -16,18 +14,18 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.kitkat.showtime.R
-import com.kitkat.showtime.model.ThumbnailModel
-import kotlinx.android.synthetic.main.item_thumbnail.view.*
+import com.kitkat.showtime.model.ShowModel
+import kotlinx.android.synthetic.main.item_show.view.*
 import kotlinx.android.synthetic.main.loader.view.*
 import java.util.ArrayList
 
-class ThumbnailAdapter(
-    private val mValues: ArrayList<ThumbnailModel.Result>,
+class ShowAdapter(
+    private val mValues: ArrayList<ShowModel.Result>,
     private val mContext : Context
-) : RecyclerView.Adapter<ThumbnailAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ShowAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_thumbnail, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_show, parent, false)
         return ViewHolder(view)
     }
 
@@ -71,7 +69,7 @@ class ThumbnailAdapter(
         val progressBar: ProgressBar = mView.progressBar
 
         override fun toString(): String {
-            return super.toString() + " wallet "
+            return super.toString() + " show "
         }
     }
 

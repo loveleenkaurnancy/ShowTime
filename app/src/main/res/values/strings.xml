@@ -7,4 +7,11 @@
 
     <string name="api_key">f687013245cc1386305a52890b31e484</string>
     <string name="something_went_wrong">Something went wrong. Please try again</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="trending_daily">Trending Daily</string>
+
+    <string name="movies_arriving_today">movies_arriving_today</string>
+    <string name="movies_popular">movies_popular</string>
+    <string name="movies_trending_daily">movies_trending_daily</string>
+    <string name="movies_trending_weekly">movies_trending_weekly</string>
 </resources>

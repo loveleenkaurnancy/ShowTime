@@ -7,6 +7,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="@dimen/margin_20dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -31,7 +32,7 @@
                 android:src="@drawable/ic_launcher_background" />
 
             <RelativeLayout
-                android:id="@+id/rl_arriving_today"
+                android:id="@+id/rlArrivingToday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10dp"
@@ -57,14 +58,122 @@
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_arriving_today"
+                android:id="@+id/rvArrivingToday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10dp"
                 android:clipToPadding="false"
-                android:paddingLeft="@dimen/margin_20dp"
+                android:paddingStart="@dimen/margin_20dp"
                 android:scrollbars="horizontal"
-                tools:listitem="@layout/item_thumbnail" />
+                tools:listitem="@layout/item_show" />
+
+            <RelativeLayout
+                android:id="@+id/rlPopularMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:paddingStart="@dimen/margin_20dp">
+
+                <TextView
+                    android:id="@+id/tv_popular_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/popular_movies"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_16sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_toEndOf="@+id/tv_popular_movies"
+                    android:src="@drawable/ic_arrow" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/margin_20dp"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/item_show" />
+
+            <RelativeLayout
+                android:id="@+id/rlTrendingDaily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:paddingStart="@dimen/margin_20dp">
+
+                <TextView
+                    android:id="@+id/tv_trending_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/trending_daily"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_16sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_toEndOf="@+id/tv_trending_daily"
+                    android:src="@drawable/ic_arrow" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTrendingDaily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/margin_20dp"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/item_show" />
+
+            <RelativeLayout
+                android:id="@+id/rlTrendingWeekly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:paddingStart="@dimen/margin_20dp">
+
+                <TextView
+                    android:id="@+id/tv_trending_weekly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Trending Weekly"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_16sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_toEndOf="@+id/tv_trending_weekly"
+                    android:src="@drawable/ic_arrow" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTrendingWeekly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/margin_20dp"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/item_show" />
 
         </LinearLayout>
 

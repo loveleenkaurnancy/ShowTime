@@ -4,16 +4,18 @@ class Constants {
 
     companion object {
 
-        const val BASE_URL = "https://api.themoviedb.org/3/"
+        private const val BASE_URL = "https://api.themoviedb.org/3"
 
-        const val MOVIE = BASE_URL + "movie"
+        private const val MOVIE = "/movie"
 
-        const val MOVIE_UPCOMING = "$MOVIE/upcoming"
-        const val MOVIE_POPULAR = "$MOVIE/popular"
-        const val MOVIE_TRENDING_DAILY = "trending/$MOVIE/day"
-        const val MOVIE_TRENDING_WEEKLY = "trending/$MOVIE/week"
+        const val MOVIE_UPCOMING = "$BASE_URL$MOVIE/upcoming"
+        const val MOVIE_POPULAR = "$BASE_URL$MOVIE/popular"
+        const val MOVIE_TRENDING_DAILY = "$BASE_URL/trending$MOVIE/day"
+        const val MOVIE_TRENDING_WEEKLY = "$BASE_URL/trending$MOVIE/week"
 
         const val IMAGE_PATH = "https://image.tmdb.org/t/p/w500"
+
+        val PAGE_NUMBER: Int = 1
 
     }
 }
