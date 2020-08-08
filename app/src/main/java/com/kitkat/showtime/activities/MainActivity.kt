@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kitkat.showtime.R
+import com.kitkat.showtime.fragments.ComingSoonFragment
 import com.kitkat.showtime.fragments.MoviesFragment
+import com.kitkat.showtime.fragments.TvFragment
 import com.kitkat.showtime.utilities.FragmentUtils
 
 class MainActivity : BaseActivity() {
@@ -36,42 +38,42 @@ class MainActivity : BaseActivity() {
                             active_fragment = "movies"
 
                         }
-//
-//                        R.id.action_connections -> {
-//
-//                            if (!(active_fragment.equals("connections"))) {
-//                                FragmentUtils.addFragmentsInBarContainer(
-//                                    ConnectionsFragment(),
-//                                    supportFragmentManager
-//                                )
-//                            }
-//                            active_fragment = "connections"
-//
-//                        }
-//
-//                        R.id.action_profile -> {
-//
-//                            if (!(active_fragment.equals("profile"))) {
-//                                FragmentUtils.addFragmentsInBarContainer(
-//                                    ProfileFragment(),
-//                                    supportFragmentManager
-//                                )
-//                            }
-//                            active_fragment = "profile"
-//
-//                        }
-//
-//                        R.id.action_forum -> {
-//
-//                            if (!(active_fragment.equals("forum"))) {
-//                                FragmentUtils.addFragmentsInBarContainer(
-//                                    ForumFragment(),
-//                                    supportFragmentManager
-//                                )
-//                            }
-//                            active_fragment = "forum"
-//
-//                        }
+
+                        R.id.action_tv -> {
+
+                            if (!(active_fragment.equals("tv"))) {
+                                FragmentUtils.addFragmentsInBarContainer(
+                                    TvFragment(),
+                                    supportFragmentManager
+                                )
+                            }
+                            active_fragment = "tv"
+
+                        }
+
+                        R.id.action_search -> {
+
+                            if (!(active_fragment.equals("search"))) {
+                                FragmentUtils.addFragmentsInBarContainer(
+                                    ComingSoonFragment(),
+                                    supportFragmentManager
+                                )
+                            }
+                            active_fragment = "search"
+
+                        }
+
+                        R.id.action_my_stuffs -> {
+
+                            if (!(active_fragment.equals("my_stuffs"))) {
+                                FragmentUtils.addFragmentsInBarContainer(
+                                    ComingSoonFragment(),
+                                    supportFragmentManager
+                                )
+                            }
+                            active_fragment = "my_stuffs"
+
+                        }
 
                     }
                     return true
@@ -79,7 +81,7 @@ class MainActivity : BaseActivity() {
             })
 
         FragmentUtils.addFragmentsInBarContainer(MoviesFragment(), supportFragmentManager)
-        active_fragment="newsfeed"
+        active_fragment="movies"
     }
 
     internal var doubleBackToExitPressedOnce = false

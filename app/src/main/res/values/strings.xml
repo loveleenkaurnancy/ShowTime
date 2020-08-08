@@ -10,8 +10,23 @@
     <string name="popular_movies">Popular Movies</string>
     <string name="trending_daily">Trending Daily</string>
 
+    <string name="movies_banner">movies_banner</string>
     <string name="movies_arriving_today">movies_arriving_today</string>
     <string name="movies_popular">movies_popular</string>
     <string name="movies_trending_daily">movies_trending_daily</string>
     <string name="movies_trending_weekly">movies_trending_weekly</string>
+
+    <string name="tv_banner">tv_banner</string>
+    <string name="tv_arriving_today">tv_arriving_today</string>
+    <string name="tv_popular">tv_popular</string>
+    <string name="tv_trending_daily">tv_trending_daily</string>
+    <string name="tv_trending_weekly">tv_trending_weekly</string>
+
+
+    <string name="coming_soon">Coming Soon</string>
+    <string name="whoops">Whoops</string>
+    <string name="slow_or_no_internet">Slow or no internet connection.\nPlease check your internet settings</string>
+    <string name="pull_down_to_refresh">Pull down to refresh the screen</string>
+    <string name="tv">TV</string>
+    <string name="popular_tv_shows">Popular TV Shows</string>
 </resources>

@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginVertical="@dimen/margin_10dp"
-                    android:text="@string/movies"
+                    android:text="@string/tv"
                     android:textColor="@color/white"
                     android:textSize="@dimen/size_18sp"
                     android:textStyle="bold" />
@@ -105,7 +105,7 @@
                     tools:listitem="@layout/item_show" />
 
                 <RelativeLayout
-                    android:id="@+id/rlPopularMovies"
+                    android:id="@+id/rlPopularTv"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,11 +113,11 @@
                     android:paddingStart="@dimen/margin_20dp">
 
                     <TextView
-                        android:id="@+id/tv_popular_movies"
+                        android:id="@+id/tv_popular_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/popular_movies"
+                        android:text="@string/popular_tv_shows"
                         android:textColor="@color/white"
                         android:textSize="@dimen/size_16sp" />
 
@@ -126,13 +126,13 @@
                         android:layout_height="15dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/margin_10dp"
-                        android:layout_toEndOf="@+id/tv_popular_movies"
+                        android:layout_toEndOf="@+id/tv_popular_tv"
                         android:src="@drawable/ic_arrow" />
 
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvPopularMovies"
+                    android:id="@+id/rvPopularTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"

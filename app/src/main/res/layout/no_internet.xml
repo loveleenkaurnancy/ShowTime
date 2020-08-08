@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/whoops"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/slow_or_no_internet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_14sp" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:src="@drawable/no_internet" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/pull_down_to_refresh"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

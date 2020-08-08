@@ -6,7 +6,7 @@
         android:id="@+id/action_movies"
         android:enabled="true"
         android:icon="@drawable/selector_movies"
-        android:title="Explore"
+        android:title="Movies"
         app:showAsAction="always|withText" />
 
     <item
@@ -24,7 +24,7 @@
         app:showAsAction="always|withText" />
 
     <item
-        android:id="@+id/action_shop"
+        android:id="@+id/action_my_stuffs"
         android:enabled="true"
         android:icon="@drawable/selector_my_stuffs"
         android:title="My Stuffs"

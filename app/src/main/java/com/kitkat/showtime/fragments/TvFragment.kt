@@ -3,12 +3,12 @@ package com.kitkat.showtime.fragments
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -20,23 +20,22 @@ import com.kitkat.showtime.model.ShowModel
 import com.kitkat.showtime.network.RetrofitClient
 import com.kitkat.showtime.utilities.CheckNetworkStatus
 import com.kitkat.showtime.utilities.Constants
-import kotlinx.android.synthetic.main.fragment_movies.*
-import kotlinx.android.synthetic.main.fragment_movies.view.*
+import kotlinx.android.synthetic.main.fragment_tv.*
+import kotlinx.android.synthetic.main.fragment_tv.view.*
 import kotlinx.android.synthetic.main.loader.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
+import java.util.ArrayList
 
-
-class MoviesFragment : Fragment() {
+class TvFragment : Fragment() {
 
     var dbHandler: DatabaseHandler? = null
     lateinit var pager_images: ViewPager
     private var countDownTimer: CountDownTimer? = null
 
     lateinit var rvArrivingToday : RecyclerView
-    lateinit var rvPopularMovies : RecyclerView
+    lateinit var rvPopularTv : RecyclerView
     lateinit var rvTrendingDaily : RecyclerView
     lateinit var rvTrendingWeekly : RecyclerView
 
@@ -51,7 +50,7 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View =  inflater.inflate(R.layout.fragment_movies, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_tv, container, false)
 
         initViews(view)
 
@@ -78,8 +77,8 @@ class MoviesFragment : Fragment() {
         rvArrivingToday = view.findViewById(R.id.rvArrivingToday)
         rvArrivingToday.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
 
-        rvPopularMovies = view.findViewById(R.id.rvPopularMovies)
-        rvPopularMovies.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
+        rvPopularTv = view.findViewById(R.id.rvPopularTv)
+        rvPopularTv.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
 
         rvTrendingDaily = view.findViewById(R.id.rvTrendingDaily)
         rvTrendingDaily.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
@@ -91,11 +90,11 @@ class MoviesFragment : Fragment() {
 
     private fun apiCalls(view : View) {
 
-        moviesTopRated(view)
-        moviesArrivingToday(view)
-        moviesPopular(view)
-        moviesTrendingDaily(view)
-        moviesTrendingWeekly(view)
+        tvTopRated(view)
+        tvArrivingToday(view)
+        tvPopular(view)
+        tvTrendingDaily(view)
+        tvTrendingWeekly(view)
         startTimeCounter(view)
 
     }
@@ -105,25 +104,25 @@ class MoviesFragment : Fragment() {
         view.rl_pager.visibility = View.GONE
 
         view.rlArrivingToday.visibility = View.GONE
-        view.rlPopularMovies.visibility = View.GONE
+        view.rlPopularTv.visibility = View.GONE
         view.rlTrendingDaily.visibility = View.GONE
         view.rlTrendingWeekly.visibility = View.GONE
 
         view.rvArrivingToday.visibility = View.GONE
-        view.rvPopularMovies.visibility = View.GONE
+        view.rvPopularTv.visibility = View.GONE
         view.rvTrendingDaily.visibility = View.GONE
         view.rvTrendingWeekly.visibility = View.GONE
 
     }
 
-    private fun moviesTopRated(view: View) {
+    private fun tvTopRated(view: View) {
 
-        val typeBanner = resources.getString(R.string.movies_banner)
+        val typeBanner = resources.getString(R.string.tv_banner)
         view.progressBar.visibility = View.VISIBLE
 
         if(CheckNetworkStatus.isOnline(requireContext())) {
 
-            (RetrofitClient.getClient.moviesTopRated(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
+            (RetrofitClient.getClient.tvTopRated(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
                 Callback<ShowModel> {
                 @RequiresApi(api = 16)
                 override fun onResponse(call: Call<ShowModel>, response: Response<ShowModel>) {
@@ -204,13 +203,13 @@ class MoviesFragment : Fragment() {
 
     }
 
-    private fun moviesArrivingToday(view: View) {
+    private fun tvArrivingToday(view: View) {
 
-        val type_at = resources.getString(R.string.movies_arriving_today)
+        val type_at = resources.getString(R.string.tv_arriving_today)
 
         if(CheckNetworkStatus.isOnline(requireContext())) {
 
-            (RetrofitClient.getClient.moviesArrivingToday(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
+            (RetrofitClient.getClient.tvArrivingToday(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
                 Callback<ShowModel> {
                 @RequiresApi(api = 16)
                 override fun onResponse(call: Call<ShowModel>, response: Response<ShowModel>) {
@@ -273,13 +272,13 @@ class MoviesFragment : Fragment() {
 
     }
 
-    private fun moviesPopular(view: View) {
+    private fun tvPopular(view: View) {
 
-        val type_mp = resources.getString(R.string.movies_popular)
+        val type_mp = resources.getString(R.string.tv_popular)
 
         if(CheckNetworkStatus.isOnline(requireContext())) {
 
-            (RetrofitClient.getClient.moviesPopular(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
+            (RetrofitClient.getClient.tvPopular(resources.getString(R.string.api_key), Constants.PAGE_NUMBER).enqueue(object :
                 Callback<ShowModel> {
                 @RequiresApi(api = 16)
                 override fun onResponse(call: Call<ShowModel>, response: Response<ShowModel>) {
@@ -300,8 +299,8 @@ class MoviesFragment : Fragment() {
 
                             if(size != 0) {
 
-                                rlPopularMovies.visibility = View.VISIBLE
-                                rvPopularMovies.visibility = View.VISIBLE
+                                rlPopularTv.visibility = View.VISIBLE
+                                rvPopularTv.visibility = View.VISIBLE
 
                                 for (i in 0 until size) {
 
@@ -316,7 +315,7 @@ class MoviesFragment : Fragment() {
 
                                 }
 
-                                rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext())
+                                rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext())
                             }
                         }
                     }
@@ -333,23 +332,23 @@ class MoviesFragment : Fragment() {
         }
         else {
 
-            view.rlPopularMovies.visibility = View.VISIBLE
-            view.rvPopularMovies.visibility = View.VISIBLE
+            view.rlPopularTv.visibility = View.VISIBLE
+            view.rvPopularTv.visibility = View.VISIBLE
 
             arrayList_pm = (dbHandler as DatabaseHandler).show(type_mp)
-            view.rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext())
+            view.rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext())
 
         }
 
     }
 
-    private fun moviesTrendingDaily(view: View) {
+    private fun tvTrendingDaily(view: View) {
 
-        val type_td = resources.getString(R.string.movies_trending_daily)
+        val type_td = resources.getString(R.string.tv_trending_daily)
 
         if(CheckNetworkStatus.isOnline(requireContext())) {
 
-            (RetrofitClient.getClient.moviesTrendingDaily(resources.getString(R.string.api_key)).enqueue(object :
+            (RetrofitClient.getClient.tvTrendingDaily(resources.getString(R.string.api_key)).enqueue(object :
                 Callback<ShowModel> {
                 @RequiresApi(api = 16)
                 override fun onResponse(call: Call<ShowModel>, response: Response<ShowModel>) {
@@ -413,13 +412,13 @@ class MoviesFragment : Fragment() {
 
     }
 
-    private fun moviesTrendingWeekly(view: View) {
+    private fun tvTrendingWeekly(view: View) {
 
-        val type_tw = resources.getString(R.string.movies_trending_weekly)
+        val type_tw = resources.getString(R.string.tv_trending_weekly)
 
         if(CheckNetworkStatus.isOnline(requireContext())) {
 
-            (RetrofitClient.getClient.moviesTrendingWeekly(resources.getString(R.string.api_key)).enqueue(object :
+            (RetrofitClient.getClient.tvTrendingWeekly(resources.getString(R.string.api_key)).enqueue(object :
                 Callback<ShowModel> {
                 @RequiresApi(api = 16)
                 override fun onResponse(call: Call<ShowModel>, response: Response<ShowModel>) {

@@ -10,7 +10,7 @@ import com.kitkat.showtime.model.ShowModel
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY, $BACKDROP_PATH TEXT, $TYPE TEXT);"
+        val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY, $SHOW_ID INTEGER, $POSTER_PATH TEXT, $BACKDROP_PATH TEXT, $TYPE TEXT);"
         db.execSQL(CREATE_TABLE)
     }
 
@@ -23,6 +23,8 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
     fun addTask(showModel: ShowModel.Result, type : String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
+        values.put(SHOW_ID, showModel.id)
+        values.put(POSTER_PATH, showModel.poster_path)
         values.put(BACKDROP_PATH, showModel.backdrop_path)
         values.put(TYPE, type)
         val _success = db.insert(TABLE_NAME, null, values)
@@ -54,9 +56,11 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    val thumbnailModel = ShowModel.Result()
-                    thumbnailModel.backdrop_path = cursor.getString(cursor.getColumnIndex(BACKDROP_PATH))
-                    showList.add(thumbnailModel)
+                    val showModel = ShowModel.Result()
+                    showModel.id = cursor.getInt(cursor.getColumnIndex(SHOW_ID))
+                    showModel.poster_path = cursor.getString(cursor.getColumnIndex(POSTER_PATH))
+                    showModel.backdrop_path = cursor.getString(cursor.getColumnIndex(BACKDROP_PATH))
+                    showList.add(showModel)
                 } while (cursor.moveToNext())
             }
         }
@@ -94,6 +98,8 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         private val DB_NAME = "showTime"
         private val TABLE_NAME = "showTime"
         private val ID = "id"
+        private val SHOW_ID = "show_id"
+        private val POSTER_PATH = "poster_path"
         private val BACKDROP_PATH = "backdrop_path"
         private val TYPE = "type"
     }

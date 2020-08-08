@@ -10,7 +10,7 @@ class SharedPreferenceUtil(context: Context) {
 
     init {
         _prefs = context.getSharedPreferences(
-            "PREF_CLIM8",
+            "SHOW_TIME",
             Context.MODE_PRIVATE
         )
         _editor = this._prefs!!.edit()

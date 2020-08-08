@@ -11,6 +11,7 @@ class ShowModel {
     class Result {
 
         var id: Int? = 0
+        var poster_path: String? = ""
         var backdrop_path: String? = ""
 
     }
