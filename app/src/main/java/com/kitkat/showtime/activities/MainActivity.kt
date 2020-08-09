@@ -5,6 +5,8 @@ import android.os.Handler
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kitkat.showtime.R
 import com.kitkat.showtime.fragments.ComingSoonFragment
@@ -15,7 +17,6 @@ import com.kitkat.showtime.utilities.FragmentUtils
 class MainActivity : BaseActivity() {
 
     lateinit var bottomNavigationView: BottomNavigationView
-    var active_fragment: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,55 +24,46 @@ class MainActivity : BaseActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
+        val moviesFragment: Fragment = MoviesFragment()
+        val tvFragment: Fragment = TvFragment()
+        val comingSoonFragment: Fragment = ComingSoonFragment()
+        val fm: FragmentManager = supportFragmentManager
+        var active: Fragment = moviesFragment
+
+        FragmentUtils.addFragmentsInBarContainer(comingSoonFragment, supportFragmentManager, comingSoonFragment)
+        FragmentUtils.addFragmentsInBarContainer(tvFragment, supportFragmentManager, tvFragment)
+        FragmentUtils.addFragmentsInBarContainer(moviesFragment, supportFragmentManager)
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
             object : BottomNavigationView.OnNavigationItemSelectedListener {
                 override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
                     when (item.itemId) {
                         R.id.action_movies -> {
 
-                            if (!(active_fragment.equals("movies"))) {
-                                FragmentUtils.addFragmentsInBarContainer(
-                                    MoviesFragment(),
-                                    supportFragmentManager
-                                )
-                            }
-                            active_fragment = "movies"
+                            FragmentUtils.hideShowFragmentsInBarContainer(moviesFragment, supportFragmentManager, active)
+                            active = moviesFragment
 
                         }
 
                         R.id.action_tv -> {
 
-                            if (!(active_fragment.equals("tv"))) {
-                                FragmentUtils.addFragmentsInBarContainer(
-                                    TvFragment(),
-                                    supportFragmentManager
-                                )
-                            }
-                            active_fragment = "tv"
+                            FragmentUtils.hideShowFragmentsInBarContainer(tvFragment, supportFragmentManager, active)
+                            active = tvFragment
 
                         }
 
                         R.id.action_search -> {
 
-                            if (!(active_fragment.equals("search"))) {
-                                FragmentUtils.addFragmentsInBarContainer(
-                                    ComingSoonFragment(),
-                                    supportFragmentManager
-                                )
-                            }
-                            active_fragment = "search"
+                            FragmentUtils.hideShowFragmentsInBarContainer(comingSoonFragment, supportFragmentManager, active)
+                            active = comingSoonFragment
 
                         }
 
                         R.id.action_my_stuffs -> {
 
-                            if (!(active_fragment.equals("my_stuffs"))) {
-                                FragmentUtils.addFragmentsInBarContainer(
-                                    ComingSoonFragment(),
-                                    supportFragmentManager
-                                )
-                            }
-                            active_fragment = "my_stuffs"
+                            FragmentUtils.hideShowFragmentsInBarContainer(comingSoonFragment, supportFragmentManager, active)
+                            active = comingSoonFragment
 
                         }
 
@@ -79,9 +71,6 @@ class MainActivity : BaseActivity() {
                     return true
                 }
             })
-
-        FragmentUtils.addFragmentsInBarContainer(MoviesFragment(), supportFragmentManager)
-        active_fragment="movies"
     }
 
     internal var doubleBackToExitPressedOnce = false

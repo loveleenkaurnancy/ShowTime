@@ -14,23 +14,27 @@ class FragmentUtils {
         fun addFragmentsInBarContainer(fragment: Fragment, fragmentManager: FragmentManager) {
             transaction = fragmentManager.beginTransaction()
             // transaction.setCustomAnimations(R.anim.slide_up,R.anim.slide_down,R.anim.slide_up,R.anim.slide_down);
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack
+            // Replace whatever is in the fragment_container view with this fragment
 
-            transaction.replace(R.id.fragment_container_dashboard, fragment)
-            // transaction.addToBackStack(null);
+            transaction.add(R.id.fragment_container_dashboard, fragment)
+
             // Commit the transaction
             transaction.commit()
         }
 
-        fun addFragmentsInBarContainerBack(fragment: Fragment, fragmentManager: FragmentManager) {
+        fun addFragmentsInBarContainer(fragment: Fragment, fragmentManager: FragmentManager, fragmentHide: Fragment) {
             transaction = fragmentManager.beginTransaction()
             // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack
 
-            transaction.replace(R.id.fragment_container_dashboard, fragment)
-            transaction.addToBackStack(null)
-            // transaction.addToBackStack(null);
+            transaction.add(R.id.fragment_container_dashboard, fragment).hide(fragmentHide)
+
+            // Commit the transaction
+            transaction.commit()
+        }
+
+        fun hideShowFragmentsInBarContainer(fragment: Fragment, fragmentManager: FragmentManager, fragmentHide: Fragment) {
+            transaction = fragmentManager.beginTransaction().hide(fragmentHide).show(fragment)
+
             // Commit the transaction
             transaction.commit()
         }
