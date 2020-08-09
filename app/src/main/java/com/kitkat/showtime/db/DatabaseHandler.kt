@@ -33,21 +33,6 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         return (Integer.parseInt("$_success") != -1)
     }
 
-//    fun getTask(_id: Int): Tasks {
-//        val tasks = Tasks()
-//        val db = writableDatabase
-//        val selectQuery = "SELECT  * FROM $TABLE_NAME WHERE $ID = $_id"
-//        val cursor = db.rawQuery(selectQuery, null)
-//
-//        cursor?.moveToFirst()
-//        tasks.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
-//        tasks.name = cursor.getString(cursor.getColumnIndex(NAME))
-//        tasks.desc = cursor.getString(cursor.getColumnIndex(DESC))
-//        tasks.completed = cursor.getString(cursor.getColumnIndex(COMPLETED))
-//        cursor.close()
-//        return tasks
-//    }
-
     fun show(type : String): ArrayList<ShowModel.Result> {
         val showList = ArrayList<ShowModel.Result>()
         val db = writableDatabase
@@ -68,17 +53,6 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         return showList
     }
 
-//    fun updateTask(tasks: Tasks): Boolean {
-//        val db = this.writableDatabase
-//        val values = ContentValues()
-//        values.put(NAME, tasks.name)
-//        values.put(DESC, tasks.desc)
-//        values.put(COMPLETED, tasks.completed)
-//        val _success = db.update(TABLE_NAME, values, ID + "=?", arrayOf(tasks.id.toString())).toLong()
-//        db.close()
-//        return Integer.parseInt("$_success") != -1
-//    }
-
     fun deleteShows(type: String): Boolean {
         val db = this.writableDatabase
         val _success = db.delete(TABLE_NAME, TYPE + "=?", arrayOf(type))
@@ -86,12 +60,6 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         return Integer.parseInt("$_success") != -1
     }
 
-//    fun deleteAllTasks(): Boolean {
-//        val db = this.writableDatabase
-//        val _success = db.delete(TABLE_NAME, null, null).toLong()
-//        db.close()
-//        return Integer.parseInt("$_success") != -1
-//    }
 
     companion object {
         private val DB_VERSION = 1
