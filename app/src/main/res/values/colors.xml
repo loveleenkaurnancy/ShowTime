@@ -6,6 +6,8 @@
 
     <color name="grey">#002D4C</color>
 
+    <color name="offwhite">#CACACA</color>
     <color name="white">#FFFFFF</color>
-    <color name="brown">#a04029</color>
+    <color name="brown">#dc5f36</color>
+    <color name="yellow">#ffc973</color>
 </resources>

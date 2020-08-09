@@ -35,6 +35,7 @@ class TvFragment : Fragment(), View.OnClickListener {
     var dbHandler: DatabaseHandler? = null
     lateinit var pager_images: ViewPager
     private var countDownTimer: CountDownTimer? = null
+    private var source: String = "tv"
 
     lateinit var rvArrivingToday : RecyclerView
     lateinit var rvPopularTv : RecyclerView
@@ -249,7 +250,7 @@ class TvFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext())
+                                rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext(), source)
                             }
                         }
                     }
@@ -270,7 +271,7 @@ class TvFragment : Fragment(), View.OnClickListener {
             view.rvArrivingToday.visibility = View.VISIBLE
 
             arrayList_at = (dbHandler as DatabaseHandler).show(type_at)
-            view.rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext())
+            view.rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext(), source)
 
         }
 
@@ -319,7 +320,7 @@ class TvFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext())
+                                rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext(), source)
                             }
                         }
                     }
@@ -340,7 +341,7 @@ class TvFragment : Fragment(), View.OnClickListener {
             view.rvPopularTv.visibility = View.VISIBLE
 
             arrayList_pm = (dbHandler as DatabaseHandler).show(type_mp)
-            view.rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext())
+            view.rvPopularTv.adapter = ShowAdapter(arrayList_pm, requireContext(), source)
 
         }
 
@@ -389,7 +390,7 @@ class TvFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext())
+                                rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext(), source)
                             }
                         }
                     }
@@ -410,7 +411,7 @@ class TvFragment : Fragment(), View.OnClickListener {
             view.rvTrendingDaily.visibility = View.VISIBLE
 
             arrayList_td = (dbHandler as DatabaseHandler).show(type_td)
-            view.rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext())
+            view.rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext(), source)
 
         }
 
@@ -459,7 +460,7 @@ class TvFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext())
+                                rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext(), source)
                             }
                         }
                     }
@@ -480,7 +481,7 @@ class TvFragment : Fragment(), View.OnClickListener {
             view.rvTrendingWeekly.visibility = View.VISIBLE
 
             arrayList_tw = (dbHandler as DatabaseHandler).show(type_tw)
-            view.rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext())
+            view.rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext(), source)
 
         }
 
@@ -514,7 +515,7 @@ class TvFragment : Fragment(), View.OnClickListener {
             R.id.rlArrivingToday->
             {
                 val intent = Intent(context, ArrivingTodayActivity::class.java)
-                intent.putExtra("source", "tv")
+                intent.putExtra("source", source)
                 startActivity(intent)
             }
         }

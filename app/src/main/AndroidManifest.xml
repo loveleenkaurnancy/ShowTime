@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ArrivingTodayActivity"></activity>
+        <activity android:name=".activities.NoInternetActivity"></activity>
+        <activity android:name=".activities.ShowDetailsActivity" />
+        <activity android:name=".activities.ArrivingTodayActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.kitkat.showtime.R
 import com.kitkat.showtime.activities.ArrivingTodayActivity
+import com.kitkat.showtime.activities.ShowDetailsActivity
 import com.kitkat.showtime.adapters.BannerAdapter
 import com.kitkat.showtime.adapters.ShowAdapter
 import com.kitkat.showtime.db.DatabaseHandler
@@ -36,6 +37,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
     var dbHandler: DatabaseHandler? = null
     lateinit var pager_images: ViewPager
     private var countDownTimer: CountDownTimer? = null
+    private var source: String = "movies"
 
     lateinit var rvArrivingToday : RecyclerView
     lateinit var rvPopularMovies : RecyclerView
@@ -250,7 +252,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext())
+                                rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext(), source)
                             }
                         }
                     }
@@ -271,7 +273,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
             view.rvArrivingToday.visibility = View.VISIBLE
 
             arrayList_at = (dbHandler as DatabaseHandler).show(type_at)
-            view.rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext())
+            view.rvArrivingToday.adapter = ShowAdapter(arrayList_at, requireContext(), source)
 
         }
 
@@ -320,7 +322,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext())
+                                rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext(), source)
                             }
                         }
                     }
@@ -341,7 +343,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
             view.rvPopularMovies.visibility = View.VISIBLE
 
             arrayList_pm = (dbHandler as DatabaseHandler).show(type_mp)
-            view.rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext())
+            view.rvPopularMovies.adapter = ShowAdapter(arrayList_pm, requireContext(), source)
 
         }
 
@@ -390,7 +392,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext())
+                                rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext(), source)
                             }
                         }
                     }
@@ -411,7 +413,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
             view.rvTrendingDaily.visibility = View.VISIBLE
 
             arrayList_td = (dbHandler as DatabaseHandler).show(type_td)
-            view.rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext())
+            view.rvTrendingDaily.adapter = ShowAdapter(arrayList_td, requireContext(), source)
 
         }
 
@@ -460,7 +462,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
 
                                 }
 
-                                rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext())
+                                rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext(), source)
                             }
                         }
                     }
@@ -481,7 +483,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
             view.rvTrendingWeekly.visibility = View.VISIBLE
 
             arrayList_tw = (dbHandler as DatabaseHandler).show(type_tw)
-            view.rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext())
+            view.rvTrendingWeekly.adapter = ShowAdapter(arrayList_tw, requireContext(), source)
 
         }
 
@@ -515,7 +517,7 @@ class MoviesFragment : Fragment(), View.OnClickListener {
             R.id.rlArrivingToday->
             {
                 val intent = Intent(context, ArrivingTodayActivity::class.java)
-                intent.putExtra("source", "movies")
+                intent.putExtra("source", source)
                 startActivity(intent)
             }
         }

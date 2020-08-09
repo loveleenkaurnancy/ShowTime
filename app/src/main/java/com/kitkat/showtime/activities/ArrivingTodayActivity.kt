@@ -40,7 +40,7 @@ class ArrivingTodayActivity : BaseActivity(), View.OnClickListener {
             arrayList = (dbHandler as DatabaseHandler).show(resources.getString(R.string.tv_arriving_today))
         }
 
-        rvArrivingToday.adapter = ArrivingAdapter(arrayList, context)
+        rvArrivingToday.adapter = ArrivingAdapter(arrayList, context, source)
 
         tv_total_count.setText(arrayList.size.toString() + " videos")
 

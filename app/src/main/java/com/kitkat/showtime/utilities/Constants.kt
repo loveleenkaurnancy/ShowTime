@@ -14,12 +14,14 @@ class Constants {
         const val MOVIE_POPULAR = "$BASE_URL$MOVIE/popular"
         const val MOVIE_TRENDING_DAILY = "$BASE_URL/trending$MOVIE/day"
         const val MOVIE_TRENDING_WEEKLY = "$BASE_URL/trending$MOVIE/week"
+        const val MOVIE_DETAILS = "$BASE_URL$MOVIE/"
 
         const val TV_TOP_RATED = "$BASE_URL$TV/top_rated"
         const val TV_UPCOMING = "$BASE_URL$TV/airing_today"
         const val TV_POPULAR = "$BASE_URL$TV/popular"
         const val TV_TRENDING_DAILY = "$BASE_URL/trending$TV/day"
         const val TV_TRENDING_WEEKLY = "$BASE_URL/trending$TV/week"
+        const val TV_DETAILS = "$BASE_URL$TV/"
 
         const val IMAGE_PATH = "https://image.tmdb.org/t/p/w500"
 
