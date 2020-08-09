@@ -34,4 +34,11 @@
     <string name="tv">TV</string>
     <string name="popular_tv_shows">Popular TV Shows</string>
     <string name="watch_trailer">Watch Trailer</string>
+    <string name="genres">Genres</string>
+    <string name="director">Director</string>
+    <string name="languages">Languages</string>
+    <string name="no_of_episodes">No of Episodes</string>
+    <string name="no_of_seasons">No of Seasons</string>
+    <string name="release_date">Release Date</string>
+    <string name="you_might_like">You Might Like</string>
 </resources>

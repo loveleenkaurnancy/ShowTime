@@ -245,8 +245,10 @@ class TvFragment : Fragment(), View.OnClickListener {
                                     showModel.poster_path = Constants.IMAGE_PATH + response.body()?.getResults()?.get(i)?.poster_path
                                     showModel.backdrop_path = Constants.IMAGE_PATH + response.body()?.getResults()?.get(i)?.backdrop_path
 
-                                    arrayList_at.add(showModel)
-                                    dbHandler?.addTask(showModel, type_at) as Boolean
+                                    if(!(response.body()?.getResults()?.get(i)?.backdrop_path.isNullOrEmpty())){
+                                        arrayList_at.add(showModel)
+                                        dbHandler?.addTask(showModel, type_at) as Boolean
+                                    }
 
                                 }
 

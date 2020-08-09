@@ -2,12 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:scrollbars="none">-->
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -21,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@color/colorPrimary" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -92,6 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:layout_marginHorizontal="@dimen/margin_20dp"
                 android:layout_marginTop="@dimen/margin_20dp"
                 android:layout_toRightOf="@+id/ic_play"
@@ -110,11 +113,189 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            
+            <LinearLayout
+                android:id="@+id/related"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_similar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:layout_marginHorizontal="@dimen/margin_20dp"
+                    android:text="@string/you_might_like"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSimilar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/margin_20dp"
+                    android:scrollbars="horizontal"
+                    tools:listitem="@layout/item_show" />
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/more_details"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_genres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15dp"
+                            android:text="@string/genres"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_genres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/genres"
+                            android:textColor="@color/offwhite"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:background="@color/offwhite"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_languages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15dp"
+                            android:text="@string/languages"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_languages"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/languages"
+                            android:textColor="@color/offwhite"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:background="@color/offwhite"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_no_of_episodes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15dp"
+                            android:text="@string/no_of_episodes"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_no_of_episodes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/offwhite"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:background="@color/offwhite"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_no_of_seasons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15dp"
+                            android:text="@string/no_of_seasons"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_no_of_seasons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/offwhite"
+                            android:textSize="@dimen/size_16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_release_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15dp"
+                            android:text="@string/release_date"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_release_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/offwhite"
+                            android:textSize="@dimen/size_16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+<!--    </androidx.core.widget.NestedScrollView>-->
 
     <include
         layout="@layout/loader"

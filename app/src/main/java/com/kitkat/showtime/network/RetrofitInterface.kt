@@ -26,6 +26,9 @@ interface RetrofitInterface {
     @GET(Constants.MOVIE_DETAILS + "{movie_id}")
     abstract fun moviesDetails(@Path("movie_id") movie_id : Int, @Query("api_key") api_key : String): Call<ShowDetailsModel>
 
+    @GET(Constants.MOVIE_SIMILAR + "{movie_id}" + "/similar")
+    abstract fun moviesSimilar(@Path("movie_id") movie_id : Int, @Query("api_key") api_key : String, @Query("page") page : Int): Call<ShowModel>
+
 
 
     @GET(Constants.TV_TOP_RATED)
@@ -44,6 +47,9 @@ interface RetrofitInterface {
     abstract fun tvTrendingWeekly(@Query("api_key") api_key : String): Call<ShowModel>
 
     @GET(Constants.TV_DETAILS + "{tv_id}")
-    abstract fun tvDetails(@Path("tv_id") movie_id : Int, @Query("api_key") api_key : String): Call<ShowDetailsModel>
+    abstract fun tvDetails(@Path("tv_id") tv_id : Int, @Query("api_key") api_key : String): Call<ShowDetailsModel>
+
+    @GET(Constants.TV_SIMILAR + "{tv_id}" + "/similar")
+    abstract fun tvSimilar(@Path("tv_id") tv_id : Int, @Query("api_key") api_key : String, @Query("page") page : Int): Call<ShowModel>
 
 }
